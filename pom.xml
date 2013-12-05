@@ -27,9 +27,9 @@
     </licenses>
 
     <scm>
-        <connection>scm:svn:svn://andy_jefferson@svn.code.sf.net/p/datanucleus/code/platform/store.types.jodatime/trunk</connection>
-        <developerConnection>scm:svn:svn+ssh://andy_jefferson@svn.code.sf.net/p/datanucleus/code/platform/store.types.jodatime/trunk</developerConnection>
-        <url>http://svn.code.sf.net/p/datanucleus/code/platform/store.types.jodatime/trunk</url>
+        <connection>scm:git:git://github.com/datanucleus/datanucleus-jodatime.git</connection>
+        <url>https://github.com/datanucleus/datanucleus-jodatime</url>
+        <developerConnection>scm:git:git://github.com/datanucleus/datanucleus-jodatime.git</developerConnection>
     </scm>
 
     <developers>
