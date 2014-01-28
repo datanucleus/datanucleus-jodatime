@@ -5,11 +5,11 @@
     <parent>
         <groupId>org.datanucleus</groupId>
         <artifactId>datanucleus-maven-parent</artifactId>
-        <version>3.3</version>
+        <version>4.0.0</version>
     </parent>
 
     <artifactId>datanucleus-jodatime</artifactId>
-    <version>3.2.2-SNAPSHOT</version>
+    <version>4.0.0-m1-SNAPSHOT</version>
 
     <name>DataNucleus Jodatime plugin</name>
     <description>
@@ -17,8 +17,8 @@
     </description>
 
     <properties>
-        <dn.core.version>3.2.0</dn.core.version>
-        <dn.rdbms.version>3.2.0</dn.rdbms.version>
+        <dn.core.version>4.0.0-m1-SNAPSHOT</dn.core.version>
+        <dn.rdbms.version>4.0.0-m1-SNAPSHOT</dn.rdbms.version>
         <jodatime.version>1.6</jodatime.version>
     </properties>
 
