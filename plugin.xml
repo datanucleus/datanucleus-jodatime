@@ -50,22 +50,22 @@ Contributors:
             converter-class="org.datanucleus.store.types.converters.JodaPeriodStringConverter"/>
     </extension>
 
-    <!-- JAVA TYPES MAPPING, for "mapped" datastores -->
-    <extension point="org.datanucleus.store_mapping">
-        <mapping java-type="org.joda.time.DateTime" mapping-class="org.datanucleus.store.rdbms.mapping.JodaDateTimeMapping"/>
-        <mapping java-type="org.joda.time.LocalDate" mapping-class="org.datanucleus.store.rdbms.mapping.JodaLocalDateMapping"/>
-        <mapping java-type="org.joda.time.LocalTime" mapping-class="org.datanucleus.store.rdbms.mapping.JodaLocalTimeMapping"/>
-        <mapping java-type="org.joda.time.Duration" mapping-class="org.datanucleus.store.rdbms.mapping.JodaDurationMapping"/>
-        <mapping java-type="org.joda.time.Interval" mapping-class="org.datanucleus.store.rdbms.mapping.JodaIntervalMapping"/>
-        <mapping java-type="org.joda.time.Period" mapping-class="org.datanucleus.store.rdbms.mapping.JodaPeriodMapping"/>
-    </extension>
-
     <!-- QUERY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
         <query-method-evaluator class="org.joda.time.Interval" method="getStart"
             evaluator="org.datanucleus.query.evaluator.memory.IntervalGetStartMethodEvaluator"/>
         <query-method-evaluator class="org.joda.time.Interval" method="getEnd"
             evaluator="org.datanucleus.query.evaluator.memory.IntervalGetEndMethodEvaluator"/>
+    </extension>
+
+    <!-- RDBMS : JAVA TYPES MAPPING -->
+    <extension point="org.datanucleus.store.rdbms.java_mapping">
+        <mapping java-type="org.joda.time.DateTime" mapping-class="org.datanucleus.store.rdbms.mapping.JodaDateTimeMapping"/>
+        <mapping java-type="org.joda.time.LocalDate" mapping-class="org.datanucleus.store.rdbms.mapping.JodaLocalDateMapping"/>
+        <mapping java-type="org.joda.time.LocalTime" mapping-class="org.datanucleus.store.rdbms.mapping.JodaLocalTimeMapping"/>
+        <mapping java-type="org.joda.time.Duration" mapping-class="org.datanucleus.store.rdbms.mapping.JodaDurationMapping"/>
+        <mapping java-type="org.joda.time.Interval" mapping-class="org.datanucleus.store.rdbms.mapping.JodaIntervalMapping"/>
+        <mapping java-type="org.joda.time.Period" mapping-class="org.datanucleus.store.rdbms.mapping.JodaPeriodMapping"/>
     </extension>
 
     <!-- RDBMS : SQL EXPRESSIONS -->
