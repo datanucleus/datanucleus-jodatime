@@ -58,16 +58,13 @@ public class JodaDurationMapping extends SingleFieldMapping
             // Not got mappings yet so use column metadata to define
             ColumnMetaData[] colmds = getColumnMetaDataForMember(mmd, roleForMember);
             boolean useString = false;
-            if (colmds != null && colmds.length > 0 && colmds[0].getJdbcType() != null)
+            if (colmds != null && colmds.length > 0 && colmds[0].getJdbcType() != null && MetaDataUtils.isJdbcTypeString(colmds[0].getJdbcType()))
             {
-                if (MetaDataUtils.isJdbcTypeString(colmds[0].getJdbcType()))
-                {
-                    useString = true;
-                }
+                useString = true;
             }
             return (useString ? ClassNameConstants.JAVA_LANG_STRING : ClassNameConstants.JAVA_LANG_LONG);
         }
-        else if (datastoreMappings != null && datastoreMappings.length > 0 && datastoreMappings[0].isStringBased())
+        else if (datastoreMappings[0].isStringBased())
         {
             // Use String
             return ClassNameConstants.JAVA_LANG_STRING;
