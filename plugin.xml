@@ -38,14 +38,22 @@ Contributors:
     <extension point="org.datanucleus.type_converter">
         <type-converter name="dn.joda-datetime-string" member-type="org.joda.time.DateTime" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaDateTimeStringConverter"/>
+        <type-converter name="dn.joda-datetime-timestamp" member-type="org.joda.time.DateTime" datastore-type="java.sql.Timestamp"
+            converter-class="org.datanucleus.store.types.converters.JodaDateTimeTimestampConverter"/>
         <type-converter name="dn.joda-duration-string" member-type="org.joda.time.Duration" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaDurationStringConverter"/>
+        <type-converter name="dn.joda-duration-long" member-type="org.joda.time.Duration" datastore-type="java.lang.Long"
+            converter-class="org.datanucleus.store.types.converters.JodaDurationLongConverter"/>
         <type-converter name="dn.joda-interval-string" member-type="org.joda.time.Interval" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaIntervalStringConverter"/>
         <type-converter name="dn.joda-localdate-string" member-type="org.joda.time.LocalDate" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaLocalDateStringConverter"/>
+        <type-converter name="dn.joda-localdate-sqldate" member-type="org.joda.time.LocalDate" datastore-type="java.sql.Date"
+            converter-class="org.datanucleus.store.types.converters.JodaLocalDateSqlDateConverter"/>
         <type-converter name="dn.joda-localtime-string" member-type="org.joda.time.LocalTime" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaLocalTimeStringConverter"/>
+        <type-converter name="dn.joda-localtime-sqltime" member-type="org.joda.time.LocalTime" datastore-type="java.sql.Time"
+            converter-class="org.datanucleus.store.types.converters.JodaLocalTimeSqlTimeConverter"/>
         <type-converter name="dn.joda-period-string" member-type="org.joda.time.Period" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaPeriodStringConverter"/>
     </extension>
