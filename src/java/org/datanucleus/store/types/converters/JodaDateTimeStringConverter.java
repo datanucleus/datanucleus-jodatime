@@ -23,7 +23,7 @@ import org.joda.time.format.ISODateTimeFormat;
 /**
  * TypeConverter from Joda DateTime to String.
  */
-public class JodaDateTimeStringConverter implements TypeConverter<DateTime, String>
+public class JodaDateTimeStringConverter implements TypeConverter<DateTime, String>, ColumnLengthDefiningTypeConverter
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
@@ -44,5 +44,17 @@ public class JodaDateTimeStringConverter implements TypeConverter<DateTime, Stri
         }
 
         return ISODateTimeFormat.dateTime().parseDateTime(str);
+    }
+
+    @Override
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // Persist as "yyyy-MM-ddTHH:mm:ss.SSSZ" when stored as string
+        // e.g "2009-05-13T07:09:26.000+01:00"
+        return 30;
     }
 }

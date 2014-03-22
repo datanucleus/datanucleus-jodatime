@@ -23,7 +23,7 @@ import org.joda.time.format.ISODateTimeFormat;
 /**
  * TypeConverter from Joda LocalTime to String.
  */
-public class JodaLocalTimeStringConverter implements TypeConverter<LocalTime, String>
+public class JodaLocalTimeStringConverter implements TypeConverter<LocalTime, String>, ColumnLengthDefiningTypeConverter
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
@@ -43,5 +43,15 @@ public class JodaLocalTimeStringConverter implements TypeConverter<LocalTime, St
             return null;
         }
         return ISODateTimeFormat.hourMinuteSecondMillis().parseDateTime(str).toLocalTime();
+    }
+
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // Persist as "hh:mm:ss.SSS" when stored as string
+        return 12;
     }
 }

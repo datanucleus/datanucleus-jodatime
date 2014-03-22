@@ -23,7 +23,7 @@ import org.joda.time.format.ISODateTimeFormat;
 /**
  * TypeConverter from Joda LocalDate to String.
  */
-public class JodaLocalDateStringConverter implements TypeConverter<LocalDate, String>
+public class JodaLocalDateStringConverter implements TypeConverter<LocalDate, String>, ColumnLengthDefiningTypeConverter
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
@@ -44,5 +44,15 @@ public class JodaLocalDateStringConverter implements TypeConverter<LocalDate, St
         }
 
         return ISODateTimeFormat.date().parseDateTime(str).toLocalDate();
+    }
+
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // Persist as "yyyy-MM-dd" when stored as string
+        return 10;
     }
 }
