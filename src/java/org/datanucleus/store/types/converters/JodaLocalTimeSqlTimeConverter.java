@@ -32,6 +32,10 @@ public class JodaLocalTimeSqlTimeConverter implements TypeConverter<LocalTime, T
     @SuppressWarnings("deprecation")
     public Time toDatastoreType(LocalTime lt)
     {
+        if (lt == null)
+        {
+            return null;
+        }
         return new Time(lt.getHourOfDay(), lt.getMinuteOfHour(), lt.getSecondOfMinute());
     }
 

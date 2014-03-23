@@ -31,6 +31,10 @@ public class JodaDateTimeTimestampConverter implements TypeConverter<DateTime, T
      */
     public Timestamp toDatastoreType(DateTime dt)
     {
+        if (dt == null)
+        {
+            return null;
+        }
         return new Timestamp(dt.getMillis());
     }
 

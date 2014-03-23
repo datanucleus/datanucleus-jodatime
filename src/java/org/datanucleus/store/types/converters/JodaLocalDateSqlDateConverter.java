@@ -32,6 +32,10 @@ public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, D
     @SuppressWarnings("deprecation")
     public Date toDatastoreType(LocalDate ld)
     {
+        if (ld == null)
+        {
+            return null;
+        }
         return new Date(ld.getYear(), ld.getMonthOfYear(), ld.getDayOfMonth());
     }
 
