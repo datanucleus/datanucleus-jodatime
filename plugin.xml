@@ -52,6 +52,8 @@ Contributors:
 
         <type-converter name="dn.joda-interval-string" member-type="org.joda.time.Interval" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaIntervalStringConverter"/>
+        <type-converter name="dn.joda-interval-timestamps" member-type="org.joda.time.Interval" datastore-type="[Ljava.sql.Timestamp;"
+            converter-class="org.datanucleus.store.types.converters.JodaIntervalTimestampsConverter"/>
 
         <type-converter name="dn.joda-period-string" member-type="org.joda.time.Period" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.converters.JodaPeriodStringConverter"/>
@@ -67,16 +69,12 @@ Contributors:
 
     <!-- RDBMS : JAVA TYPES MAPPING -->
     <extension point="org.datanucleus.store.rdbms.java_mapping">
-        <mapping java-type="org.joda.time.Duration" mapping-class="org.datanucleus.store.rdbms.mapping.JodaDurationMapping"/>
+        <!-- TODO Aim to remove this when we can get RDBMS query process to work with TypeConverterMultiMapping -->
         <mapping java-type="org.joda.time.Interval" mapping-class="org.datanucleus.store.rdbms.mapping.JodaIntervalMapping"/>
-        <mapping java-type="org.joda.time.Period" mapping-class="org.datanucleus.store.rdbms.mapping.JodaPeriodMapping"/>
     </extension>
 
     <!-- RDBMS : SQL EXPRESSIONS -->
     <extension point="org.datanucleus.store.rdbms.sql_expression">
-        <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.JodaPeriodMapping" 
-            literal-class="org.datanucleus.store.rdbms.sql.expression.StringLiteral"
-            expression-class="org.datanucleus.store.rdbms.sql.expression.StringExpression"/>
         <sql-expression mapping-class="org.datanucleus.store.rdbms.mapping.JodaIntervalMapping" 
             literal-class="org.datanucleus.store.rdbms.sql.expression.JodaIntervalLiteral"
             expression-class="org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression"/>
