@@ -15,7 +15,7 @@ limitations under the License.
 Contributors:
     ...
  **********************************************************************/
-package org.datanucleus.store.rdbms.sql.method;
+package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
 import java.util.List;
 

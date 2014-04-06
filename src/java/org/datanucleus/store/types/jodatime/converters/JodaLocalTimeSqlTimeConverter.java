@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2012 Andy Jefferson and others. All rights reserved.
+Copyright (c) 2014 Andy Jefferson and others. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -15,43 +15,40 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
+import java.sql.Time;
+
+import org.datanucleus.store.types.converters.TypeConverter;
 import org.joda.time.LocalTime;
-import org.joda.time.format.ISODateTimeFormat;
 
 /**
- * TypeConverter from Joda LocalTime to String.
+ * TypeConverter from Joda LocalTime to java.sql.Time.
  */
-public class JodaLocalTimeStringConverter implements TypeConverter<LocalTime, String>, ColumnLengthDefiningTypeConverter
+public class JodaLocalTimeSqlTimeConverter implements TypeConverter<LocalTime, Time>
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    public String toDatastoreType(LocalTime lt)
+    @SuppressWarnings("deprecation")
+    public Time toDatastoreType(LocalTime lt)
     {
-        return lt != null ? lt.toString("HH:mm:ss.SSS") : null;
+        if (lt == null)
+        {
+            return null;
+        }
+        return new Time(lt.getHourOfDay(), lt.getMinuteOfHour(), lt.getSecondOfMinute());
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public LocalTime toMemberType(String str)
+    public LocalTime toMemberType(Time time)
     {
-        if (str == null)
+        if (time == null)
         {
             return null;
         }
-        return ISODateTimeFormat.hourMinuteSecondMillis().parseDateTime(str).toLocalTime();
-    }
-
-    public int getDefaultColumnLength(int columnPosition)
-    {
-        if (columnPosition != 0)
-        {
-            return -1;
-        }
-        // Persist as "hh:mm:ss.SSS" when stored as string
-        return 12;
+        return new LocalTime(time.getTime());
     }
 }

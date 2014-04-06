@@ -15,44 +15,34 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
-import org.joda.time.LocalDate;
-import org.joda.time.format.ISODateTimeFormat;
+import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.Interval;
 
 /**
- * TypeConverter from Joda LocalDate to String.
+ * TypeConverter from Joda Interval to String.
  */
-public class JodaLocalDateStringConverter implements TypeConverter<LocalDate, String>, ColumnLengthDefiningTypeConverter
+public class JodaIntervalStringConverter implements TypeConverter<Interval, String>
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    public String toDatastoreType(LocalDate ld)
+    public String toDatastoreType(Interval itv)
     {
-        return ld != null ? ld.toString() : null;
+        return (itv != null ? itv.toString() : null);
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public LocalDate toMemberType(String str)
+    public Interval toMemberType(String str)
     {
         if (str == null)
         {
             return null;
         }
 
-        return ISODateTimeFormat.date().parseDateTime(str).toLocalDate();
-    }
-
-    public int getDefaultColumnLength(int columnPosition)
-    {
-        if (columnPosition != 0)
-        {
-            return -1;
-        }
-        // Persist as "yyyy-MM-dd" when stored as string
-        return 10;
+        return new Interval(str);
     }
 }

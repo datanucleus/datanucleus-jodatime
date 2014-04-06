@@ -15,33 +15,45 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
-import org.joda.time.Duration;
+import org.datanucleus.store.types.converters.ColumnLengthDefiningTypeConverter;
+import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.LocalTime;
+import org.joda.time.format.ISODateTimeFormat;
 
 /**
- * TypeConverter from Joda Duration to String.
+ * TypeConverter from Joda LocalTime to String.
  */
-public class JodaDurationStringConverter implements TypeConverter<Duration, String>
+public class JodaLocalTimeStringConverter implements TypeConverter<LocalTime, String>, ColumnLengthDefiningTypeConverter
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    public String toDatastoreType(Duration dur)
+    public String toDatastoreType(LocalTime lt)
     {
-        return dur != null ? dur.toString() : null;
+        return lt != null ? lt.toString("HH:mm:ss.SSS") : null;
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public Duration toMemberType(String str)
+    public LocalTime toMemberType(String str)
     {
         if (str == null)
         {
             return null;
         }
+        return ISODateTimeFormat.hourMinuteSecondMillis().parseDateTime(str).toLocalTime();
+    }
 
-        return new Duration(str);
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // Persist as "hh:mm:ss.SSS" when stored as string
+        return 12;
     }
 }

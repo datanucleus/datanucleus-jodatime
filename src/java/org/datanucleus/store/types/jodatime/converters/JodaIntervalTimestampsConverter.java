@@ -15,10 +15,12 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
 import java.sql.Timestamp;
 
+import org.datanucleus.store.types.converters.MultiColumnConverter;
+import org.datanucleus.store.types.converters.TypeConverter;
 import org.joda.time.Interval;
 
 /**

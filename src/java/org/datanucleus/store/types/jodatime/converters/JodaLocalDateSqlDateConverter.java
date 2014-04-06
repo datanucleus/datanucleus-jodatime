@@ -15,39 +15,41 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
-import java.sql.Timestamp;
+import java.sql.Date;
 
-import org.joda.time.DateTime;
+import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.LocalDate;
 
 /**
- * TypeConverter from Joda DateTime to java.sql.Timestamp.
+ * TypeConverter from Joda LocalDate to java.sql.Date.
  */
-public class JodaDateTimeTimestampConverter implements TypeConverter<DateTime, Timestamp>
+public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, Date>
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    public Timestamp toDatastoreType(DateTime dt)
+    @SuppressWarnings("deprecation")
+    public Date toDatastoreType(LocalDate ld)
     {
-        if (dt == null)
+        if (ld == null)
         {
             return null;
         }
-        return new Timestamp(dt.getMillis());
+        return new Date(ld.getYear(), ld.getMonthOfYear(), ld.getDayOfMonth());
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public DateTime toMemberType(Timestamp ts)
+    public LocalDate toMemberType(Date date)
     {
-        if (ts == null)
+        if (date == null)
         {
             return null;
         }
 
-        return new DateTime(ts.getTime());
+        return new LocalDate(date.getTime());
     }
 }

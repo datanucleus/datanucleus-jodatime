@@ -15,10 +15,14 @@ limitations under the License.
 Contributors:
     ...
 **********************************************************************/
-package org.datanucleus.store.rdbms.sql.expression;
+package org.datanucleus.store.types.jodatime.rdbms.sql.expression;
 
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
+import org.datanucleus.store.rdbms.sql.expression.BooleanExpression;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
+import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
+import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;
 
 /**
  * Abstract representation of a JodaTime literal (to be extended by specific cases).

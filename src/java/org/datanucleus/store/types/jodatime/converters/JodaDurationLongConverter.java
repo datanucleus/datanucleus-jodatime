@@ -15,8 +15,9 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
+import org.datanucleus.store.types.converters.TypeConverter;
 import org.joda.time.Duration;
 
 /**

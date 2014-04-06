@@ -15,11 +15,11 @@ limitations under the License.
 Contributors:
     ...
  **********************************************************************/
-package org.datanucleus.store.rdbms.sql.method;
+package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
-import org.datanucleus.store.rdbms.mapping.JodaIntervalMapping;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
 import org.datanucleus.store.rdbms.mapping.java.DateMapping;
+import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 import org.joda.time.Interval;
 
 /**

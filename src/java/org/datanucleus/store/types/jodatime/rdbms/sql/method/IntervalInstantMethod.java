@@ -15,16 +15,17 @@ limitations under the License.
 Contributors:
     ...
 **********************************************************************/
-package org.datanucleus.store.rdbms.sql.method;
+package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusException;
-import org.datanucleus.store.rdbms.mapping.JodaIntervalMapping;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;
 import org.datanucleus.store.rdbms.sql.expression.TemporalExpression;
+import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 
 /**
  * SQL Method base class to enable the use either the start or end <tt>Instant</tt> of an JodaTime <tt>Interval</tt> 

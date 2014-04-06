@@ -15,9 +15,11 @@ limitations under the License.
 Contributors:
     ...
 **********************************************************************/
-package org.datanucleus.query.evaluator.memory;
+package org.datanucleus.store.types.jodatime.query.inmemory;
 
 import org.datanucleus.exceptions.NucleusException;
+import org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator;
+import org.datanucleus.query.evaluator.memory.InvocationEvaluator;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.util.Localiser;
 import org.joda.time.Interval;

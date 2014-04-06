@@ -15,33 +15,46 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
-import org.joda.time.Interval;
+import org.datanucleus.store.types.converters.ColumnLengthDefiningTypeConverter;
+import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.LocalDate;
+import org.joda.time.format.ISODateTimeFormat;
 
 /**
- * TypeConverter from Joda Interval to String.
+ * TypeConverter from Joda LocalDate to String.
  */
-public class JodaIntervalStringConverter implements TypeConverter<Interval, String>
+public class JodaLocalDateStringConverter implements TypeConverter<LocalDate, String>, ColumnLengthDefiningTypeConverter
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    public String toDatastoreType(Interval itv)
+    public String toDatastoreType(LocalDate ld)
     {
-        return (itv != null ? itv.toString() : null);
+        return ld != null ? ld.toString() : null;
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public Interval toMemberType(String str)
+    public LocalDate toMemberType(String str)
     {
         if (str == null)
         {
             return null;
         }
 
-        return new Interval(str);
+        return ISODateTimeFormat.date().parseDateTime(str).toLocalDate();
+    }
+
+    public int getDefaultColumnLength(int columnPosition)
+    {
+        if (columnPosition != 0)
+        {
+            return -1;
+        }
+        // Persist as "yyyy-MM-dd" when stored as string
+        return 10;
     }
 }

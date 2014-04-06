@@ -15,7 +15,7 @@ limitations under the License.
 Contributors:
     ...
 **********************************************************************/
-package org.datanucleus.store.rdbms.mapping;
+package org.datanucleus.store.types.jodatime.rdbms.mapping;
 
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -28,6 +28,7 @@ import org.datanucleus.NucleusContext;
 import org.datanucleus.exceptions.NucleusUserException;
 import org.datanucleus.metadata.AbstractMemberMetaData;
 import org.datanucleus.metadata.ColumnMetaData;
+import org.datanucleus.store.rdbms.mapping.MappingManager;
 import org.datanucleus.store.rdbms.mapping.java.SingleFieldMultiMapping;
 import org.datanucleus.store.rdbms.table.Column;
 import org.datanucleus.store.rdbms.table.Table;

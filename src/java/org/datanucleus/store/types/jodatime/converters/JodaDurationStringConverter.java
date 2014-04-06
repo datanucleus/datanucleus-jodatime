@@ -1,5 +1,5 @@
 /**********************************************************************
-Copyright (c) 2014 Andy Jefferson and others. All rights reserved.
+Copyright (c) 2012 Andy Jefferson and others. All rights reserved.
 Licensed under the Apache License, Version 2.0 (the "License");
 you may not use this file except in compliance with the License.
 You may obtain a copy of the License at
@@ -15,40 +15,34 @@ limitations under the License.
 Contributors:
    ...
 **********************************************************************/
-package org.datanucleus.store.types.converters;
+package org.datanucleus.store.types.jodatime.converters;
 
-import java.sql.Date;
-
-import org.joda.time.LocalDate;
+import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.Duration;
 
 /**
- * TypeConverter from Joda LocalDate to java.sql.Date.
+ * TypeConverter from Joda Duration to String.
  */
-public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, Date>
+public class JodaDurationStringConverter implements TypeConverter<Duration, String>
 {
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
-    @SuppressWarnings("deprecation")
-    public Date toDatastoreType(LocalDate ld)
+    public String toDatastoreType(Duration dur)
     {
-        if (ld == null)
-        {
-            return null;
-        }
-        return new Date(ld.getYear(), ld.getMonthOfYear(), ld.getDayOfMonth());
+        return dur != null ? dur.toString() : null;
     }
 
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toMemberType(java.lang.Object)
      */
-    public LocalDate toMemberType(Date date)
+    public Duration toMemberType(String str)
     {
-        if (date == null)
+        if (str == null)
         {
             return null;
         }
 
-        return new LocalDate(date.getTime());
+        return new Duration(str);
     }
 }
