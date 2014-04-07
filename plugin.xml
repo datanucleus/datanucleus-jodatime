@@ -60,7 +60,7 @@ Contributors:
             converter-class="org.datanucleus.store.types.jodatime.converters.JodaPeriodStringConverter"/>
     </extension>
 
-    <!-- QUERY METHODS -->
+    <!-- QUERY INMEMORY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
         <query-method-evaluator class="org.joda.time.Interval" method="getStart"
             evaluator="org.datanucleus.store.types.jodatime.query.inmemory.IntervalGetStartMethodEvaluator"/>
@@ -83,7 +83,7 @@ Contributors:
     
     <!-- RDBMS : SQL METHODS -->
     <extension point="org.datanucleus.store.rdbms.sql_method">
-        <sql-method class="org.joda.time.Interval" method="getStart" evaluator="org.datanucleus.store.types.jodatime.rdbms.sql.method.IntervalStartMethod"/>
-        <sql-method class="org.joda.time.Interval" method="getEnd" evaluator="org.datanucleus.store.types.jodatime.rdbms.sql.method.IntervalEndMethod"/>            
+        <sql-method class="org.joda.time.Interval" method="getStart" evaluator="org.datanucleus.store.types.jodatime.rdbms.sql.method.IntervalGetStartMethod"/>
+        <sql-method class="org.joda.time.Interval" method="getEnd" evaluator="org.datanucleus.store.types.jodatime.rdbms.sql.method.IntervalGetEndMethod"/>            
     </extension>
 </plugin>

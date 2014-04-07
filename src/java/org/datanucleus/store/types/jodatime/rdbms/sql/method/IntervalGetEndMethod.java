@@ -14,7 +14,7 @@ limitations under the License.
 
 Contributors:
     ...
- **********************************************************************/
+**********************************************************************/
 package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
 import java.util.List;
@@ -22,14 +22,14 @@ import java.util.List;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
- * SQL Method to enable the use the start instant of an JodaTime <tt>Interval</tt> in a filter.
+ * SQL Method to enable the use the end instant of an JodaTime <tt>Interval</tt> in a filter.
  * 
  * All the actual work happens in the {@link IntervalInstantMethod}.
  */
-public class IntervalStartMethod extends IntervalInstantMethod
+public class IntervalGetEndMethod extends IntervalInstantMethod
 {
     public SQLExpression getExpression(SQLExpression expr, List args)
     {
-        return getExpressionForSingleMapping(expr, args, 0);
+        return getExpressionForSingleMapping(expr, args, 1);
     }
 }

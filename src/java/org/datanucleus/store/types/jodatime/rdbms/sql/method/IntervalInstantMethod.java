@@ -28,8 +28,7 @@ import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
 import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 
 /**
- * SQL Method base class to enable the use either the start or end <tt>Instant</tt> of an JodaTime <tt>Interval</tt> 
- * in a filter.
+ * SQL Method base class to enable the use either the start or end <tt>Instant</tt> of a JodaTime <tt>Interval</tt> in a filter.
  */
 public abstract class IntervalInstantMethod extends AbstractSQLMethod
 {
