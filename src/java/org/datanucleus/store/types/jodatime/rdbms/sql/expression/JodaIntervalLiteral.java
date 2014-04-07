@@ -20,14 +20,17 @@ package org.datanucleus.store.types.jodatime.rdbms.sql.expression;
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
+import org.datanucleus.store.rdbms.sql.expression.BooleanExpression;
+import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
+import org.datanucleus.store.rdbms.sql.expression.SQLLiteral;
+import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;
 import org.joda.time.Interval;
 
 /**
  * Representation of an JodaTime "Interval" literal.
  */
-public class JodaIntervalLiteral extends JodaLiteral
+public class JodaIntervalLiteral extends StringTemporalExpression implements SQLLiteral
 {
-
     protected final Interval value;
 
     /**
@@ -39,7 +42,8 @@ public class JodaIntervalLiteral extends JodaLiteral
      */
     public JodaIntervalLiteral(SQLStatement stmt, JavaTypeMapping mapping, Object value, String parameterName)
     {
-        super(stmt, mapping, parameterName);
+        super(stmt, null, mapping);
+        this.parameterName = parameterName;
 
         if (value == null)
         {
@@ -56,9 +60,101 @@ public class JodaIntervalLiteral extends JodaLiteral
         }
     }
 
-    /**
-     * {@inheritDoc}
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#eq(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
      */
+    @Override
+    public BooleanExpression eq(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.eq(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.eq(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#ge(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
+     */
+    @Override
+    public BooleanExpression ge(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.ge(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.ge(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#gt(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
+     */
+    @Override
+    public BooleanExpression gt(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.gt(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.gt(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#le(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
+     */
+    @Override
+    public BooleanExpression le(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.le(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.le(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#lt(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
+     */
+    @Override
+    public BooleanExpression lt(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.lt(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.lt(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.DelegatedExpression#ne(org.datanucleus.store.rdbms.sql.expression.SQLExpression)
+     */
+    @Override
+    public BooleanExpression ne(SQLExpression expr)
+    {
+        if (expr instanceof JodaIntervalLiteral)
+        {
+            return super.ne(((JodaIntervalLiteral) expr).delegate);
+        }
+        return super.ne(expr);
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.SQLExpression#isParameter()
+     */
+    @Override
+    public boolean isParameter()
+    {
+        return delegate.isParameter();
+    }
+
+    /* (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.sql.expression.SQLLiteral#setNotParameter()
+     */
+    public void setNotParameter()
+    {
+        ((SQLLiteral)delegate).setNotParameter();
+    }
+
     public Object getValue()
     {
         return value;
