@@ -62,10 +62,8 @@ Contributors:
 
     <!-- QUERY INMEMORY METHODS -->
     <extension point="org.datanucleus.query_method_evaluators">
-        <query-method-evaluator class="org.joda.time.Interval" method="getStart"
-            evaluator="org.datanucleus.store.types.jodatime.query.inmemory.IntervalGetStartMethodEvaluator"/>
-        <query-method-evaluator class="org.joda.time.Interval" method="getEnd"
-            evaluator="org.datanucleus.store.types.jodatime.query.inmemory.IntervalGetEndMethodEvaluator"/>
+        <query-method-evaluator class="org.joda.time.Interval" method="getStart" evaluator="org.datanucleus.store.types.jodatime.query.inmemory.IntervalGetStartMethod"/>
+        <query-method-evaluator class="org.joda.time.Interval" method="getEnd" evaluator="org.datanucleus.store.types.jodatime.query.inmemory.IntervalGetEndMethod"/>
     </extension>
 
     <!-- RDBMS : JAVA TYPES MAPPING -->

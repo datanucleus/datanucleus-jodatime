@@ -21,18 +21,13 @@ import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
 import org.datanucleus.query.inmemory.InvocationEvaluator;
-import org.datanucleus.util.Localiser;
 import org.joda.time.Interval;
 
 /**
  * Evaluator for the method "{intervalExpr}.getStart()".
  */
-public class IntervalGetStartMethodEvaluator implements InvocationEvaluator
+public class IntervalGetStartMethod implements InvocationEvaluator
 {
-    /** Localisation utility for output messages */
-    protected static final Localiser LOCALISER = Localiser.getInstance("org.datanucleus.Localisation",
-        org.datanucleus.ClassConstants.NUCLEUS_CONTEXT_LOADER);
-
     /* (non-Javadoc)
      * @see org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression.InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
      */
@@ -50,7 +45,7 @@ public class IntervalGetStartMethodEvaluator implements InvocationEvaluator
         }
         else
         {
-            throw new NucleusException(LOCALISER.msg("021011", method, invokedValue.getClass().getName()));
+            throw new NucleusException(eval.getLocaliser().msg("021011", method, invokedValue.getClass().getName()));
         }
     }
 }
