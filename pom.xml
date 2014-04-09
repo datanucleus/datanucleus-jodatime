@@ -61,7 +61,7 @@
                         <Bundle-SymbolicName>org.datanucleus.store.types.jodatime;singleton:=true</Bundle-SymbolicName>
                         <Import-Package>
                             org.joda*;version="${jodatime.version}",
-                            org.datanucleus.store.rdbms*;version="${dn.rdbms.version}",
+                            org.datanucleus.store.rdbms*;version="${dn.rdbms.version}";resolution:=optional,,
                             org.datanucleus*;version="${dn.core.version}",
                             *;resolution:=optional
                         </Import-Package>
