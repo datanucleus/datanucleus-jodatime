@@ -21,6 +21,7 @@ import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.query.expression.InvokeExpression;
 import org.datanucleus.query.inmemory.InMemoryExpressionEvaluator;
 import org.datanucleus.query.inmemory.InvocationEvaluator;
+import org.datanucleus.util.Localiser;
 import org.joda.time.Interval;
 
 /**
@@ -45,7 +46,7 @@ public class IntervalGetStartMethod implements InvocationEvaluator
         }
         else
         {
-            throw new NucleusException(eval.getLocaliser().msg("021011", method, invokedValue.getClass().getName()));
+            throw new NucleusException(Localiser.msg("021011", method, invokedValue.getClass().getName()));
         }
     }
 }
