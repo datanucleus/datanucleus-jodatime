@@ -9,7 +9,7 @@
     </parent>
 
     <artifactId>datanucleus-jodatime</artifactId>
-    <version>4.0.0-m4</version>
+    <version>4.0.0-m5-SNAPSHOT</version>
 
     <name>DataNucleus Jodatime plugin</name>
     <description>
