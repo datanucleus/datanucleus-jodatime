@@ -56,8 +56,10 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
         addColumns();
     }
 
-    /* (non-Javadoc)
-     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager, java.lang.String)
+    /*
+     * (non-Javadoc)
+     * @see org.datanucleus.store.rdbms.mapping.JavaTypeMapping#initialize(RDBMSStoreManager,
+     * java.lang.String)
      */
     public void initialize(RDBMSStoreManager storeMgr, String type)
     {
@@ -84,8 +86,8 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Accessor for the name of the java-type actually used when mapping the particular datastore
-     * field. This java-type must have an entry in the datastore mappings.
+     * Accessor for the name of the java-type actually used when mapping the particular datastore field. This
+     * java-type must have an entry in the datastore mappings.
      * @param index requested datastore field index.
      * @return the name of java-type for the requested datastore field.
      */
@@ -109,15 +111,15 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall
-     * value for this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for
+     * this java type.
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
     public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
     {
-        Interval intvl = (Interval)value;
+        Interval intvl = (Interval) value;
         if (getNumberOfDatastoreMappings() == 1)
         {
             return super.getValueForDatastoreMapping(nucleusCtx, index, value);
@@ -147,7 +149,7 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
             TypeConverter conv = ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
             if (conv != null)
             {
-                return conv.toMemberType((String)datastoreValue);
+                return conv.toMemberType((String) datastoreValue);
             }
             else
             {
@@ -169,15 +171,14 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
 
         if (datastoreMappings != null && datastoreMappings.length == 1 && datastoreMappings[0].isStringBased())
         {
-        	if (value == null)
+            if (value == null)
             {
                 getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
             }
-        	else
-        	{
+            else
+            {
                 // String column
-                TypeConverter conv = 
-                    ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
+                TypeConverter conv = ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
                 if (conv != null)
                 {
                     getDatastoreMapping(0).setObject(ps, exprIndex[0], conv.toDatastoreType(value));
@@ -186,7 +187,7 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
                 {
                     throw new NucleusUserException("This type doesn't support persistence as a String");
                 }
-        	}
+            }
         }
         else
         {

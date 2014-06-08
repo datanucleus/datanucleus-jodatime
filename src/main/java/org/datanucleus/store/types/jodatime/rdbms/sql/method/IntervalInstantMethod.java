@@ -34,7 +34,7 @@ public abstract class IntervalInstantMethod extends AbstractSQLMethod
 {
     protected SQLExpression getExpressionForSingleMapping(SQLExpression expr, List args, int mappingIndex)
     {
-        if (args != null && args.size() > 0)
+        if (args != null && !args.isEmpty())
         {
             throw new NucleusException("Cannot invoke getStart()/getEnd() with arguments.");
         }
