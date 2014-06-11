@@ -27,6 +27,8 @@ import org.joda.time.DateTime;
  */
 public class JodaDateTimeTimestampConverter implements TypeConverter<DateTime, Timestamp>
 {
+    private static final long serialVersionUID = 6031764409526208264L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

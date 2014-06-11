@@ -26,6 +26,8 @@ import org.joda.time.format.ISOPeriodFormat;
  */
 public class JodaPeriodStringConverter implements TypeConverter<Period, String>
 {
+    private static final long serialVersionUID = -6320395198963801769L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

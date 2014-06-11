@@ -28,6 +28,8 @@ import org.joda.time.Interval;
  */
 public class JodaIntervalTimestampsConverter implements TypeConverter<Interval, Timestamp[]>, MultiColumnConverter
 {
+    private static final long serialVersionUID = -7473731431414706133L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

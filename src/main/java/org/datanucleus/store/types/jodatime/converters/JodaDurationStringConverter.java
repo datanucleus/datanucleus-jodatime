@@ -25,6 +25,8 @@ import org.joda.time.Duration;
  */
 public class JodaDurationStringConverter implements TypeConverter<Duration, String>
 {
+    private static final long serialVersionUID = 4664749525266258138L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

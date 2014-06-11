@@ -25,6 +25,8 @@ import org.joda.time.Interval;
  */
 public class JodaIntervalStringConverter implements TypeConverter<Interval, String>
 {
+    private static final long serialVersionUID = -6236589041948410550L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

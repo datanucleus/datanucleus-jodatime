@@ -27,6 +27,8 @@ import org.joda.time.format.ISODateTimeFormat;
  */
 public class JodaDateTimeStringConverter implements TypeConverter<DateTime, String>, ColumnLengthDefiningTypeConverter
 {
+    private static final long serialVersionUID = -3348075307815359303L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

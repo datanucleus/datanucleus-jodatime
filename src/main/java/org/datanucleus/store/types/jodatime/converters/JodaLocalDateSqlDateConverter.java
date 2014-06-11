@@ -27,6 +27,8 @@ import org.joda.time.LocalDate;
  */
 public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, Date>
 {
+    private static final long serialVersionUID = 4411382310833638172L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */

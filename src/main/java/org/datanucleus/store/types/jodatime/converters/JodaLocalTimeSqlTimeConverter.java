@@ -27,6 +27,8 @@ import org.joda.time.LocalTime;
  */
 public class JodaLocalTimeSqlTimeConverter implements TypeConverter<LocalTime, Time>
 {
+    private static final long serialVersionUID = 8089166041969543038L;
+
     /* (non-Javadoc)
      * @see org.datanucleus.store.types.converters.TypeConverter#toDatastoreType(java.lang.Object)
      */
