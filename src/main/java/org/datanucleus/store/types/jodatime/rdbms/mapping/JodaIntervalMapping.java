@@ -98,11 +98,8 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
             // STRING
             return ClassNameConstants.JAVA_LANG_STRING;
         }
-        else
-        {
-            // TIMESTAMP
-            return ClassNameConstants.JAVA_SQL_TIMESTAMP;
-        }
+        // TIMESTAMP
+        return ClassNameConstants.JAVA_SQL_TIMESTAMP;
     }
 
     public Class getJavaType()
@@ -149,20 +146,15 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
             TypeConverter conv = ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
             if (conv != null)
             {
-                return conv.toMemberType((String) datastoreValue);
+                return conv.toMemberType(datastoreValue);
             }
-            else
-            {
-                throw new NucleusUserException("This type doesn't support persistence as a String");
-            }
+            throw new NucleusUserException("This type doesn't support persistence as a String");
         }
-        else
-        {
-            // Timestamp columns
-            Timestamp start = (Timestamp) getDatastoreMapping(0).getObject(rs, exprIndex[0]);
-            Timestamp end = (Timestamp) getDatastoreMapping(1).getObject(rs, exprIndex[1]);
-            return new Interval(start.getTime(), end.getTime());
-        }
+
+        // Timestamp columns
+        Timestamp start = (Timestamp) getDatastoreMapping(0).getObject(rs, exprIndex[0]);
+        Timestamp end = (Timestamp) getDatastoreMapping(1).getObject(rs, exprIndex[1]);
+        return new Interval(start.getTime(), end.getTime());
     }
 
     public void setObject(ExecutionContext ec, PreparedStatement ps, int[] exprIndex, Object value)
