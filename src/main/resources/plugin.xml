@@ -23,6 +23,7 @@ Contributors:
     <extension point="org.datanucleus.java_type">
         <java-type name="org.joda.time.DateTime" dfg="true" embedded="true" converter-name="dn.joda-datetime-timestamp"/>
         <java-type name="org.joda.time.LocalDate" dfg="true" embedded="true" converter-name="dn.joda-localdate-sqldate"/>
+        <java-type name="org.joda.time.LocalDateTime" dfg="true" embedded="true" converter-name="dn.joda-localdatetime-timestamp"/>
         <java-type name="org.joda.time.LocalTime" dfg="true" embedded="true" converter-name="dn.joda-localtime-sqltime"/>
         <java-type name="org.joda.time.Duration" dfg="true" embedded="true" converter-name="dn.joda-duration-string"/>
         <java-type name="org.joda.time.Interval" dfg="true" embedded="true" converter-name="dn.joda-interval-string"/>
@@ -45,6 +46,11 @@ Contributors:
             converter-class="org.datanucleus.store.types.jodatime.converters.JodaLocalTimeStringConverter"/>
         <type-converter name="dn.joda-localtime-sqltime" member-type="org.joda.time.LocalTime" datastore-type="java.sql.Time"
             converter-class="org.datanucleus.store.types.jodatime.converters.JodaLocalTimeSqlTimeConverter"/>
+
+        <type-converter name="dn.joda-localdatetime-string" member-type="org.joda.time.LocalDateTime" datastore-type="java.lang.String"
+            converter-class="org.datanucleus.store.types.jodatime.converters.JodaLocalDateTimeStringConverter"/>
+        <type-converter name="dn.joda-localdatetime-timestamp" member-type="org.joda.time.LocalDateTime" datastore-type="java.sql.Timestamp"
+            converter-class="org.datanucleus.store.types.jodatime.converters.JodaLocalDateTimeTimestampConverter"/>
 
         <type-converter name="dn.joda-duration-string" member-type="org.joda.time.Duration" datastore-type="java.lang.String"
             converter-class="org.datanucleus.store.types.jodatime.converters.JodaDurationStringConverter"/>
