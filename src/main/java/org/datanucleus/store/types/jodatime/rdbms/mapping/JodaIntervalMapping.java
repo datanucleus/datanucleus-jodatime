@@ -44,6 +44,7 @@ import org.joda.time.Interval;
  * <li>Two columns using Timestamp mappings for the start/end components</li>
  * </ul>
  * See http://joda-time.sourceforge.net/
+ * TODO Remove this and use TypeConverters
  */
 public class JodaIntervalMapping extends SingleFieldMultiMapping
 {
