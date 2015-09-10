@@ -39,7 +39,6 @@ public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, D
             return null;
         }
         return new Date(ld.toDateTimeAtStartOfDay().getMillis());
-//        return new Date(ld.getYear(), ld.getMonthOfYear(), ld.getDayOfMonth());
     }
 
     /* (non-Javadoc)

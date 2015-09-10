@@ -111,6 +111,7 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
     /**
      * Method to return the value to be stored in the specified datastore index given the overall value for
      * this java type.
+     * @param nucleusCtx NucleusContext
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
