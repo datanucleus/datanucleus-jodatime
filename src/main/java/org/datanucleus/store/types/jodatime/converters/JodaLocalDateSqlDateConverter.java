@@ -20,6 +20,7 @@ package org.datanucleus.store.types.jodatime.converters;
 import java.sql.Date;
 
 import org.datanucleus.store.types.converters.TypeConverter;
+import org.joda.time.DateTimeZone;
 import org.joda.time.LocalDate;
 
 /**
@@ -38,7 +39,7 @@ public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, D
         {
             return null;
         }
-        return new Date(ld.toDateTimeAtStartOfDay().getMillis());
+        return new Date(ld.toDateTimeAtStartOfDay(DateTimeZone.UTC).getMillis());
     }
 
     /* (non-Javadoc)
@@ -51,6 +52,6 @@ public class JodaLocalDateSqlDateConverter implements TypeConverter<LocalDate, D
             return null;
         }
 
-        return new LocalDate(date.getTime());
+        return new LocalDate(date.getTime(), DateTimeZone.UTC);
     }
 }
