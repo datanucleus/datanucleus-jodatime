@@ -30,7 +30,7 @@ import org.joda.time.Interval;
 public class IntervalGetStartMethod implements InvocationEvaluator
 {
     /* (non-Javadoc)
-     * @see org.datanucleus.query.evaluator.memory.InvocationEvaluator#evaluate(org.datanucleus.query.expression.InvokeExpression, org.datanucleus.query.evaluator.memory.InMemoryExpressionEvaluator)
+     * @see org.datanucleus.query.inmemory.InvocationEvaluator#evaluate(org.datanucleus.query.expression.InvokeExpression, org.datanucleus.query.inmemory.InMemoryExpressionEvaluator)
      */
     public Object evaluate(InvokeExpression expr, Object invokedValue, InMemoryExpressionEvaluator eval)
     {
