@@ -19,6 +19,7 @@ package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
 import java.util.List;
 
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
@@ -28,8 +29,8 @@ import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
  */
 public class IntervalGetEndMethod extends IntervalInstantMethod
 {
-    public SQLExpression getExpression(SQLExpression expr, List args)
+    public SQLExpression getExpression(SQLStatement stmt, SQLExpression expr, List args)
     {
-        return getExpressionForSingleMapping(expr, args, 1);
+        return getExpressionForSingleMapping(stmt, expr, args, 1);
     }
 }

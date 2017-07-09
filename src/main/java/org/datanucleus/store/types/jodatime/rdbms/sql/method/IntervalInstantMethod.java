@@ -21,18 +21,19 @@ import java.util.List;
 
 import org.datanucleus.exceptions.NucleusException;
 import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;
 import org.datanucleus.store.rdbms.sql.expression.TemporalExpression;
-import org.datanucleus.store.rdbms.sql.method.AbstractSQLMethod;
+import org.datanucleus.store.rdbms.sql.method.SQLMethod;
 import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 
 /**
  * SQL Method base class to enable the use either the start or end <tt>Instant</tt> of a JodaTime <tt>Interval</tt> in a filter.
  */
-public abstract class IntervalInstantMethod extends AbstractSQLMethod
+public abstract class IntervalInstantMethod implements SQLMethod
 {
-    protected SQLExpression getExpressionForSingleMapping(SQLExpression expr, List args, int mappingIndex)
+    protected SQLExpression getExpressionForSingleMapping(SQLStatement stmt, SQLExpression expr, List args, int mappingIndex)
     {
         if (args != null && !args.isEmpty())
         {
