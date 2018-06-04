@@ -76,7 +76,7 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
             // Stored as single column, so use String based
             MappingManager mmgr = table.getStoreManager().getMappingManager();
             Column col = mmgr.createColumn(this, ClassNameConstants.JAVA_LANG_STRING, 0);
-            mmgr.createDatastoreMapping(this, mmd, 0, col);
+            mmgr.createColumnMapping(this, mmd, 0, col);
         }
         else
         {
@@ -92,9 +92,9 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
      * @param index requested datastore field index.
      * @return the name of java-type for the requested datastore field.
      */
-    public String getJavaTypeForDatastoreMapping(int index)
+    public String getJavaTypeForColumnMapping(int index)
     {
-        if (datastoreMappings != null && datastoreMappings.length == 1 && datastoreMappings[0].isStringBased())
+        if (columnMappings != null && columnMappings.length == 1 && columnMappings[0].isStringBased())
         {
             // STRING
             return ClassNameConstants.JAVA_LANG_STRING;
@@ -109,19 +109,18 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
     }
 
     /**
-     * Method to return the value to be stored in the specified datastore index given the overall value for
-     * this java type.
+     * Method to return the value to be stored in the specified datastore index given the overall value for this java type.
      * @param nucleusCtx NucleusContext
      * @param index The datastore index
      * @param value The overall value for this java type
      * @return The value for this datastore index
      */
-    public Object getValueForDatastoreMapping(NucleusContext nucleusCtx, int index, Object value)
+    public Object getValueForColumnMapping(NucleusContext nucleusCtx, int index, Object value)
     {
         Interval intvl = (Interval) value;
-        if (getNumberOfDatastoreMappings() == 1)
+        if (getNumberOfColumnMappings() == 1)
         {
-            return super.getValueForDatastoreMapping(nucleusCtx, index, value);
+            return super.getValueForColumnMapping(nucleusCtx, index, value);
         }
         else if (index == 0)
         {
@@ -136,15 +135,15 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
 
     public Object getObject(ExecutionContext ec, ResultSet rs, int[] exprIndex)
     {
-        if (getDatastoreMapping(0).getObject(rs, exprIndex[0]) == null)
+        if (getColumnMapping(0).getObject(rs, exprIndex[0]) == null)
         {
             return null;
         }
 
-        if (datastoreMappings != null && datastoreMappings.length == 1 && datastoreMappings[0].isStringBased())
+        if (columnMappings != null && columnMappings.length == 1 && columnMappings[0].isStringBased())
         {
             // String column
-            Object datastoreValue = getDatastoreMapping(0).getObject(rs, exprIndex[0]);
+            Object datastoreValue = getColumnMapping(0).getObject(rs, exprIndex[0]);
             TypeConverter conv = ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
             if (conv != null)
             {
@@ -154,8 +153,8 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
         }
 
         // Timestamp columns
-        Timestamp start = (Timestamp) getDatastoreMapping(0).getObject(rs, exprIndex[0]);
-        Timestamp end = (Timestamp) getDatastoreMapping(1).getObject(rs, exprIndex[1]);
+        Timestamp start = (Timestamp) getColumnMapping(0).getObject(rs, exprIndex[0]);
+        Timestamp end = (Timestamp) getColumnMapping(1).getObject(rs, exprIndex[1]);
         return new Interval(start.getTime(), end.getTime());
     }
 
@@ -163,11 +162,11 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
     {
         Interval interval = (Interval) value;
 
-        if (datastoreMappings != null && datastoreMappings.length == 1 && datastoreMappings[0].isStringBased())
+        if (columnMappings != null && columnMappings.length == 1 && columnMappings[0].isStringBased())
         {
             if (value == null)
             {
-                getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
+                getColumnMapping(0).setObject(ps, exprIndex[0], null);
             }
             else
             {
@@ -175,7 +174,7 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
                 TypeConverter conv = ec.getNucleusContext().getTypeManager().getTypeConverterForType(Interval.class, String.class);
                 if (conv != null)
                 {
-                    getDatastoreMapping(0).setObject(ps, exprIndex[0], conv.toDatastoreType(value));
+                    getColumnMapping(0).setObject(ps, exprIndex[0], conv.toDatastoreType(value));
                 }
                 else
                 {
@@ -188,13 +187,13 @@ public class JodaIntervalMapping extends SingleFieldMultiMapping
             // Timestamp columns
             if (interval == null)
             {
-                getDatastoreMapping(0).setObject(ps, exprIndex[0], null);
-                getDatastoreMapping(1).setObject(ps, exprIndex[1], null);
+                getColumnMapping(0).setObject(ps, exprIndex[0], null);
+                getColumnMapping(1).setObject(ps, exprIndex[1], null);
             }
             else
             {
-                getDatastoreMapping(0).setObject(ps, exprIndex[0], new Timestamp(interval.getStartMillis()));
-                getDatastoreMapping(1).setObject(ps, exprIndex[1], new Timestamp(interval.getEndMillis()));
+                getColumnMapping(0).setObject(ps, exprIndex[0], new Timestamp(interval.getStartMillis()));
+                getColumnMapping(1).setObject(ps, exprIndex[1], new Timestamp(interval.getEndMillis()));
             }
         }
     }

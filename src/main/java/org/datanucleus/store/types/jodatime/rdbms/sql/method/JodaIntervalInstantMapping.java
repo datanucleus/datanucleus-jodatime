@@ -17,7 +17,7 @@ Contributors:
  **********************************************************************/
 package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
-import org.datanucleus.store.rdbms.mapping.datastore.DatastoreMapping;
+import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.DateMapping;
 import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 import org.joda.time.Interval;
@@ -46,18 +46,18 @@ final class JodaIntervalInstantMapping extends DateMapping
         this.mappingIndex = mappingIndex;
     }
 
-    public DatastoreMapping[] getDatastoreMappings()
+    public ColumnMapping[] getColumnMappings()
     {
-        DatastoreMapping[] startColumnMapping = {jodaIntervalMapping.getDatastoreMappings()[mappingIndex]};
+        ColumnMapping[] startColumnMapping = {jodaIntervalMapping.getColumnMappings()[mappingIndex]};
         return startColumnMapping;
     }
 
-    public DatastoreMapping getDatastoreMapping(int index)
+    public ColumnMapping getColumnMapping(int index)
     {
-        return jodaIntervalMapping.getDatastoreMappings()[mappingIndex];
+        return jodaIntervalMapping.getColumnMappings()[mappingIndex];
     }
 
-    public int getNumberOfDatastoreMappings()
+    public int getNumberOfColumnMappings()
     {
         return 1;
     }
