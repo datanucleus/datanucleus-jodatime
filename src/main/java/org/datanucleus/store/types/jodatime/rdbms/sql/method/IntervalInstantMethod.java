@@ -20,7 +20,7 @@ package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusException;
-import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;

@@ -17,7 +17,7 @@ Contributors:
  **********************************************************************/
 package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 
-import org.datanucleus.store.rdbms.mapping.datastore.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
 import org.datanucleus.store.rdbms.mapping.java.DateMapping;
 import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 import org.joda.time.Interval;
