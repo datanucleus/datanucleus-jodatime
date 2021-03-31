@@ -23,7 +23,7 @@ import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 
 /**
- * SQL Method to enable the use the end instant of an JodaTime <tt>Interval</tt> in a filter.
+ * SQL Method to enable the use the end instant of an JodaTime <i>Interval</i> in a filter.
  * 
  * All the actual work happens in the {@link IntervalInstantMethod}.
  */

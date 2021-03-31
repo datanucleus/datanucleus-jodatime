@@ -23,8 +23,8 @@ import org.datanucleus.store.types.jodatime.rdbms.mapping.JodaIntervalMapping;
 import org.joda.time.Interval;
 
 /**
- * This is a pseudo mapping class used to be able to query on the start or end <tt>Instant</tt> (usually a
- * <tt>DateTime</tt> type) of an <tt>Interval</tt>. This mapping class pretends that the mapping only has one field
+ * This is a pseudo mapping class used to be able to query on the start or end <i>Instant</i> (usually a
+ * <i>DateTime</i> type) of an <i>Interval</i>. This mapping class pretends that the mapping only has one field
  * (either the start or end instant) instead of multiple.
  */
 final class JodaIntervalInstantMapping extends DateMapping
@@ -36,8 +36,8 @@ final class JodaIntervalInstantMapping extends DateMapping
     private final int mappingIndex;
 
     /**
-     * @param jodaIntervalMapping The <tt>JodaIntervalMapping</tt> instance we are getting our data from.
-     * @param mappingIndex The index of the mapping in the previously supplied <tt>JodaIntervalMapping</tt> instance we
+     * @param jodaIntervalMapping The <i>JodaIntervalMapping</i> instance we are getting our data from.
+     * @param mappingIndex The index of the mapping in the previously supplied <i>JodaIntervalMapping</i> instance we
      * should return (ie. the mapping we pretend is the only that exists).
      */
     public JodaIntervalInstantMapping(JodaIntervalMapping jodaIntervalMapping, int mappingIndex)
