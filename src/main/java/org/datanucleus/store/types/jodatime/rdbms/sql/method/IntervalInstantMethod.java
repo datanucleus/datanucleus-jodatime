@@ -20,7 +20,7 @@ package org.datanucleus.store.types.jodatime.rdbms.sql.method;
 import java.util.List;
 
 import org.datanucleus.exceptions.NucleusException;
-import org.datanucleus.store.rdbms.mapping.column.ColumnMapping;
+import org.datanucleus.store.rdbms.mapping.java.JavaTypeMapping;
 import org.datanucleus.store.rdbms.sql.SQLStatement;
 import org.datanucleus.store.rdbms.sql.expression.SQLExpression;
 import org.datanucleus.store.rdbms.sql.expression.StringTemporalExpression;
@@ -45,9 +45,7 @@ public abstract class IntervalInstantMethod implements SQLMethod
             throw new NucleusException("Can only be used with 'StringTemporalExpression' expression types.");
         }
 
-        // TODO Why get colMapping just to get javaTypeMapping
-        ColumnMapping colMapping = expr.getJavaTypeMapping().getColumnMapping(0);
-        Object javaTypeMapping = colMapping.getJavaTypeMapping();
+        JavaTypeMapping javaTypeMapping = expr.getJavaTypeMapping();
         if (!(javaTypeMapping instanceof JodaIntervalMapping))
         {
             throw new NucleusException("Can only be used with 'JodaIntervalMapping' Java Type mappings.");
