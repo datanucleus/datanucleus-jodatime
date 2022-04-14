@@ -19,7 +19,7 @@
     <properties>
         <dn.core.version>5.9</dn.core.version>
         <dn.rdbms.version>5.9</dn.rdbms.version>
-        <jodatime.version>2.0</jodatime.version>
+        <jodatime.version>2.10.14</jodatime.version>
     </properties>
 
     <scm>
